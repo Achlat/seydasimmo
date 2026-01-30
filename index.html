@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seydasyimmo - Votre Partenaire de Confiance au Sénégal</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#C8A45C', 
+        secondary: '#0E1C2F',
+        light: '#F8FAFC'
+      },
+      borderRadius: {
+        'none': '0px',
+        'sm': '4px',
+        DEFAULT: '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        '2xl': '24px',
+        '3xl': '32px',
+        'full': '9999px',
+        'button': '8px'
+      }
+    }
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+  .hero-bg {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(217, 119, 6, 0.3) 100%),
+    url('https://images.unsplash.com/photo-1516496636080-14fb876e029d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1888&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .service-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  .testimonial-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  }
+  .floating-whatsapp {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  .scroll-indicator {
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+    40%, 43% { transform: translate3d(0,-30px,0); }
+    70% { transform: translate3d(0,-15px,0); }
+    90% { transform: translate3d(0,-4px,0); }
+  }
+  .navbar-blur {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  .gallery-item {
+    transition: all 0.4s ease;
+  }
+  .gallery-item:hover {
+    transform: scale(1.05);
+  }
+  .counter-animation {
+    animation: countUp 2s ease-out;
+  }
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .active-slide {
+    opacity: 1 !important;
+  }
+  .menu-open {
+    transform: translateX(0);
+  }
+</style>
+</head>
+<body class="font-['Raleway'] text-gray-900 overflow-x-hidden">
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-secondary/95">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex items-center">
+          <div class="flex items-center">
+           <img src="logo.png" alt="Seydasy Immobilier" class="h-12" height="200" width="80">
+
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#accueil" class="text-white hover:text-primary transition-colors duration-300 font-medium">Accueil</a>
+          <a href="#services" class="text-white hover:text-primary transition-colors duration-300 font-medium">Services</a>
+          <a href="#apropos" class="text-white hover:text-primary transition-colors duration-300 font-medium">À propos</a>
+          <a href="#galerie" class="text-white hover:text-primary transition-colors duration-300 font-medium">Galerie</a>
+          <a href="#temoignages" class="text-white hover:text-primary transition-colors duration-300 font-medium">Témoignages</a>
+          <a href="#contact" class="text-white hover:text-primary transition-colors duration-300 font-medium">Contact</a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="hidden lg:flex items-center text-white">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+              <i class="ri-phone-line text-primary"></i>
+            </div>
+            <span class="font-medium">+33 6 62 75 24 99</span>
+          </div>
+          <button class="bg-primary text-white px-6 py-3 rounded-button font-semibold hover:bg-amber-600 transition-colors duration-300 whitespace-nowrap">
+            Réserver
+          </button>
+          <button id="mobile-menu-button" class="md:hidden text-white">
+            <i class="ri-menu-line text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="md:hidden fixed top-20 left-0 w-full bg-secondary transform -translate-x-full transition-transform duration-300">
+      <div class="px-4 py-6 space-y-4">
+        <a href="#accueil" class="block text-white hover:text-primary transition-colors duration-300 font-medium py-2">Accueil</a>
+        <a href="#services" class="block text-white hover:text-primary transition-colors duration-300 font-medium py-2">Services</a>
+        <a href="#apropos" class="block text-white hover:text-primary transition-colors duration-300 font-medium py-2">À propos</a>
+        <a href="#galerie" class="block text-white hover:text-primary transition-colors duration-300 font-medium py-2">Galerie</a>
+        <a href="#temoignages" class="block text-white hover:text-primary transition-colors duration-300 font-medium py-2">Témoignages</a>
+        <a href="#contact" class="block text-white hover:text-primary transition-colors duration-300 font-medium py-2">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="accueil" class="relative min-h-screen overflow-hidden pt-20">
+    <div class="hero-slider relative min-h-screen">
+      <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 active-slide" style="background: linear-gradient(rgba(14, 28, 47, 0.7), rgba(14, 28, 47, 0.7)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'); background-size: cover; background-position: center;"></div>
+      <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000" style="background: linear-gradient(rgba(14, 28, 47, 0.7), rgba(14, 28, 47, 0.7)), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1925&q=80'); background-size: cover; background-position: center;"></div>
+      <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000" style="background: linear-gradient(rgba(14, 28, 47, 0.7), rgba(14, 28, 47, 0.7)), url('https://images.unsplash.com/photo-1464822759849-e0e100921dae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center;"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div class="text-center text-white">
+            <h1 class="font-['Playfair_Display'] text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Votre Passerelle vers<br>
+              <span class="text-primary">l'Afrique Authentique</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+              Découvrez le Sénégal à travers nos voyages sur mesure et investissez dans l'immobilier africain avec confiance et sérénité
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button class="bg-primary text-white px-8 py-4 rounded-button text-lg font-semibold hover:bg-amber-600 transition-all duration-300 transform hover:scale-105 whitespace-nowrap">
+                Découvrir nos Services
+              </button>
+              <button class="border-2 border-white text-white px-8 py-4 rounded-button text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 whitespace-nowrap">
+                Nous Contacter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <div class="scroll-indicator text-white">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-arrow-down-line text-2xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold mb-6 text-secondary">Nos Services d'Excellence</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Une expertise complète pour réaliser vos projets de voyage et d'investissement au Sénégal
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="service-card bg-white p-8 rounded-2xl shadow-lg">
+          <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <i class="ri-plane-line text-2xl text-primary"></i>
+          </div>
+          <h3 class="font-['Playfair_Display'] text-2xl font-semibold mb-4 text-secondary">Voyages Organisés</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Circuits personnalisés à travers le Sénégal, découverte culturelle et expériences authentiques avec guides locaux expérimentés.
+          </p>
+          <button class="text-primary font-semibold hover:text-amber-600 transition-colors duration-300 flex items-center">
+            En savoir plus
+            <div class="w-4 h-4 flex items-center justify-center ml-2">
+              <i class="ri-arrow-right-line"></i>
+            </div>
+          </button>
+        </div>
+        <div class="service-card bg-white p-8 rounded-2xl shadow-lg">
+          <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <i class="ri-map-pin-line text-2xl text-primary"></i>
+          </div>
+          <h3 class="font-['Playfair_Display'] text-2xl font-semibold mb-4 text-secondary">Excursions Premium</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Explorez les trésors cachés du Sénégal : Île de Gorée, Lac Rose, Delta du Sine-Saloum et bien plus encore.
+          </p>
+          <button class="text-primary font-semibold hover:text-amber-600 transition-colors duration-300 flex items-center">
+            En savoir plus
+            <div class="w-4 h-4 flex items-center justify-center ml-2">
+              <i class="ri-arrow-right-line"></i>
+            </div>
+          </button>
+        </div>
+        <div class="service-card bg-white p-8 rounded-2xl shadow-lg">
+          <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <i class="ri-user-heart-line text-2xl text-primary"></i>
+          </div>
+          <h3 class="font-['Playfair_Display'] text-2xl font-semibold mb-4 text-secondary">Accueil VIP</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Service d'accueil personnalisé pour les Sénégalais de l'extérieur : transferts, hébergement et accompagnement complet.
+          </p>
+          <button class="text-primary font-semibold hover:text-amber-600 transition-colors duration-300 flex items-center">
+            En savoir more
+            <div class="w-4 h-4 flex items-center justify-center ml-2">
+              <i class="ri-arrow-right-line"></i>
+            </div>
+          </button>
+        </div>
+        <div class="service-card bg-white p-8 rounded-2xl shadow-lg">
+          <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <i class="ri-home-line text-2xl text-primary"></i>
+          </div>
+          <h3 class="font-['Playfair_Display'] text-2xl font-semibold mb-4 text-secondary">Immobilier Résidentiel</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Achat, vente et location de biens immobiliers au Sénégal. Accompagnement juridique et administratif complet.
+          </p>
+          <button class="text-primary font-semibold hover:text-amber-600 transition-colors duration-300 flex items-center">
+            En savoir plus
+            <div class="w-4 h-4 flex items-center justify-center ml-2">
+              <i class="ri-arrow-right-line"></i>
+            </div>
+          </button>
+        </div>
+        <div class="service-card bg-white p-8 rounded-2xl shadow-lg">
+          <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <i class="ri-building-line text-2xl text-primary"></i>
+          </div>
+          <h3 class="font-['Playfair_Display'] text-2xl font-semibold mb-4 text-secondary">Investissement Immobilier</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Opportunités d'investissement immobilier rentables avec étude de marché et garantie de rentabilité.
+          </p>
+          <button class="text-primary font-semibold hover:text-amber-600 transition-colors duration-300 flex items-center">
+            En savoir plus
+            <div class="w-4 h-4 flex items-center justify-center ml-2">
+              <i class="ri-arrow-right-line"></i>
+            </div>
+          </button>
+        </div>
+        <div class="service-card bg-white p-8 rounded-2xl shadow-lg">
+          <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+            <i class="ri-shield-check-line text-2xl text-primary"></i>
+          </div>
+          <h3 class="font-['Playfair_Display'] text-2xl font-semibold mb-4 text-secondary">Gestion Patrimoniale</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Gestion complète de vos biens immobiliers : entretien, location, administration et optimisation fiscale.
+          </p>
+          <button class="text-primary font-semibold hover:text-amber-600 transition-colors duration-300 flex items-center">
+            En savoir plus
+            <div class="w-4 h-4 flex items-center justify-center ml-2">
+              <i class="ri-arrow-right-line"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À Propos Section -->
+  <section id="apropos" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <img src="logo.jpg"
+          alt="Équipe Seydasyimmo"
+          class="rounded-2xl shadow-2xl object-cover w-full h-96">
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold mb-6 text-secondary">
+            L'Excellence au Service de Vos Projets
+          </h2>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Depuis notre création, Seydasyimmo s'est imposée comme la référence incontournable pour les Sénégalais de l'extérieur souhaitant maintenir des liens forts avec leur pays d'origine.
+          </p>
+          <div class="space-y-6 mb-8">
+            <div class="flex items-start">
+              <div class="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-4 flex-shrink-0">
+                <i class="ri-check-line text-primary text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-secondary mb-2">Expertise Locale</h4>
+                <p class="text-gray-600">Une connaissance approfondie du marché sénégalais et des réglementations locales.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-4 flex-shrink-0">
+                <i class="ri-check-line text-primary text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-secondary mb-2">Accompagnement Personnalisé</h4>
+                <p class="text-gray-600">Un service sur mesure adapté à vos besoins spécifiques et vos objectifs.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-4 flex-shrink-0">
+                <i class="ri-check-line text-primary text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-secondary mb-2">Réseau International</h4>
+                <p class="text-gray-600">Présence en France et au Sénégal pour un service sans frontières.</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
+            <div class="text-center">
+              <div class="font-['Playfair_Display'] text-3xl font-bold text-primary counter-animation">500+</div>
+              <div class="text-gray-600 font-medium">Clients Satisfaits</div>
+            </div>
+            <div class="text-center">
+              <div class="font-['Playfair_Display'] text-3xl font-bold text-primary counter-animation">150+</div>
+              <div class="text-gray-600 font-medium">Biens Vendus</div>
+            </div>
+            <div class="text-center">
+              <div class="font-['Playfair_Display'] text-3xl font-bold text-primary counter-animation">8</div>
+              <div class="text-gray-600 font-medium">Années d'Expérience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galerie Section -->
+  <section id="galerie" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold mb-6 text-secondary">Découvrez Nos Réalisations</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          Une sélection de nos plus beaux voyages et propriétés immobilières au Sénégal
+        </p>
+        <div class="flex justify-center space-x-4 mb-12">
+          <button class="gallery-filter active bg-primary text-white px-6 py-3 rounded-button font-semibold whitespace-nowrap" data-filter="all">
+            Tout Voir
+          </button>
+          <button class="gallery-filter bg-white text-gray-700 px-6 py-3 rounded-button font-semibold hover:bg-primary hover:text-white transition-colors duration-300 whitespace-nowrap" data-filter="voyages">
+            Voyages
+          </button>
+          <button class="gallery-filter bg-white text-gray-700 px-6 py-3 rounded-button font-semibold hover:bg-primary hover:text-white transition-colors duration-300 whitespace-nowrap" data-filter="immobilier">
+            Immobilier
+          </button>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="gallery-item voyages bg-white rounded-2xl overflow-hidden shadow-lg">
+          <img src="one.webp"
+          alt="Village traditionnel sénégalais"
+          class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h4 class="font-['Playfair_Display'] text-xl font-semibold mb-2 text-secondary">Village Traditionnel</h4>
+            <p class="text-gray-600">Découverte authentique des traditions sénégalaises</p>
+          </div>
+        </div>
+        <div class="gallery-item immobilier bg-white rounded-2xl overflow-hidden shadow-lg">
+          <img src="two.jpg"
+          alt="Villa moderne au Sénégal"
+          class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h4 class="font-['Playfair_Display'] text-xl font-semibold mb-2 text-secondary">Villa de Luxe</h4>
+            <p class="text-gray-600">Propriété d'exception à Dakar</p>
+          </div>
+        </div>
+        <div class="gallery-item voyages bg-white rounded-2xl overflow-hidden shadow-lg">
+          <img src="lac.jpg"
+          alt="Lac Rose Sénégal"
+          class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h4 class="font-['Playfair_Display'] text-xl font-semibold mb-2 text-secondary">Lac Rose</h4>
+            <p class="text-gray-600">Merveille naturelle du Sénégal</p>
+          </div>
+        </div>
+        <div class="gallery-item immobilier bg-white rounded-2xl overflow-hidden shadow-lg">
+          <img src="c.jpg"
+          alt="Résidence moderne Dakar"
+          class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h4 class="font-['Playfair_Display'] text-xl font-semibold mb-2 text-secondary">Résidence Moderne</h4>
+            <p class="text-gray-600">Appartements haut standing</p>
+          </div>
+        </div>
+        <div class="gallery-item voyages bg-white rounded-2xl overflow-hidden shadow-lg">
+          <img src="d.jpg"
+          alt="Île de Gorée"
+          class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h4 class="font-['Playfair_Display'] text-xl font-semibold mb-2 text-secondary">Île de Gorée</h4>
+            <p class="text-gray-600">Patrimoine historique mondial</p>
+          </div>
+        </div>
+        <div class="gallery-item immobilier bg-white rounded-2xl overflow-hidden shadow-lg">
+          <img src="e.avif"
+          alt="Propriété en bord de mer"
+          class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h4 class="font-['Playfair_Display'] text-xl font-semibold mb-2 text-secondary">Villa Bord de Mer</h4>
+            <p class="text-gray-600">Vue panoramique sur l'océan</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Témoignages Section -->
+  <section id="temoignages" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold mb-6 text-secondary">Ce Que Disent Nos Clients</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          La satisfaction de nos clients est notre plus belle récompense
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="testimonial-card p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-6">
+            <img src="1.jpg"
+            alt="Aminata Diallo"
+            class="w-16 h-16 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-semibold text-secondary">Aminata Diallo</h4>
+              <p class="text-gray-600 text-sm">Entrepreneure, Paris</p>
+            </div>
+          </div>
+          <div class="flex mb-4">
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+          </div>
+          <p class="text-gray-700 italic leading-relaxed">
+            "Seydasyimmo a rendu possible mon rêve d'investir au Sénégal. Leur accompagnement professionnel et leur connaissance du marché local m'ont permis d'acquérir une magnifique propriété à Dakar en toute sérénité."
+          </p>
+        </div>
+        <div class="testimonial-card p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-6">
+            <img src="3.avif"
+            alt="Mamadou Ba"
+            class="w-16 h-16 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-semibold text-secondary">Mamadou Ba</h4>
+              <p class="text-gray-600 text-sm">Ingénieur, Lyon</p>
+            </div>
+          </div>
+          <div class="flex mb-4">
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+          </div>
+          <p class="text-gray-700 italic leading-relaxed">
+            "Le voyage organisé par Seydasyimmo pour découvrir mes racines a été extraordinaire. Chaque détail était parfaitement orchestré, de l'accueil à l'aéroport aux excursions culturelles. Une expérience inoubliable !"
+          </p>
+        </div>
+        <div class="testimonial-card p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-6">
+            <img src="2.webp"
+            alt="Fatou Seck"
+            class="w-16 h-16 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-semibold text-secondary">Fatou Seck</h4>
+              <p class="text-gray-600 text-sm">Médecin, Marseille</p>
+            </div>
+          </div>
+          <div class="flex mb-4">
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+          </div>
+          <p class="text-gray-700 italic leading-relaxed">
+            "Grâce à Seydasyimmo, j'ai pu faire construire la maison de mes rêves à Thiès. Leur suivi rigoureux du chantier et leur transparence m'ont donné une confiance totale dans ce projet d'envergure."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Localisation Section -->
+  <section id="localisation" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold mb-6 text-secondary">Nos Bureaux</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Présents en France et au Sénégal pour vous accompagner où que vous soyez
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+              <i class="ri-map-pin-line text-xl text-primary"></i>
+            </div>
+            <h3 class="font-['Playfair_Display'] text-2xl font-semibold text-secondary">Bureau France</h3>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                <i class="ri-map-pin-2-line text-primary"></i>
+              </div>
+              <div>
+                <p class="font-medium text-secondary">Adresse</p>
+                <p class="text-gray-600">Paris, France</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                <i class="ri-phone-line text-primary"></i>
+              </div>
+              <div>
+                <p class="font-medium text-secondary">Téléphone</p>
+                <p class="text-gray-600">+33 6 62 75 24 99</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                <i class="ri-time-line text-primary"></i>
+              </div>
+              <div>
+                <p class="font-medium text-secondary">Horaires</p>
+                <p class="text-gray-600">Lun - Ven : 9h00 - 18h00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+              <i class="ri-map-pin-line text-xl text-primary"></i>
+            </div>
+            <h3 class="font-['Playfair_Display'] text-2xl font-semibold text-secondary">Bureau Sénégal</h3>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                <i class="ri-map-pin-2-line text-primary"></i>
+              </div>
+              <div>
+                <p class="font-medium text-secondary">Adresse</p>
+                <p class="text-gray-600">Dakar, Sénégal</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                <i class="ri-phone-line text-primary"></i>
+              </div>
+              <div>
+                <p class="font-medium text-secondary">Téléphone</p>
+                <p class="text-gray-600">+221 77 123 45 67</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                <i class="ri-time-line text-primary"></i>
+              </div>
+              <div>
+                <p class="font-medium text-secondary">Horaires</p>
+                <p class="text-gray-600">Lun - Sam : 8h00 - 17h00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="h-96 bg-gray-200 flex items-center justify-center" style="background-image: url('https://maps.geoapify.com/v1/staticmap?style=osm-bright&width=1200&height=600&center=lonlat:-0.180653,14.693700&zoom=5&apiKey=YOUR_API_KEY'); background-size: cover; background-position: center;">
+          <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl">
+            <h4 class="font-['Playfair_Display'] text-xl font-semibold mb-2 text-secondary">Carte Interactive</h4>
+            <p class="text-gray-600">Localisez nos bureaux et planifiez votre visite</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold mb-6 text-secondary">Contactez-Nous</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Prêt à concrétiser vos projets ? Notre équipe vous accompagne à chaque étape
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div>
+          <h3 class="font-['Playfair_Display'] text-2xl font-semibold mb-8 text-secondary">Envoyez-nous un Message</h3>
+          <form class="space-y-6" id="contact-form">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Prénom</label>
+                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Nom</label>
+                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" required>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm" required>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Téléphone</label>
+              <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Service d'intérêt</label>
+              <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm bg-white pr-8">
+                <option value="">Sélectionnez un service</option>
+                <option value="voyages">Voyages Organisés</option>
+                <option value="excursions">Excursions Premium</option>
+                <option value="accueil">Accueil VIP</option>
+                <option value="immobilier">Immobilier Résidentiel</option>
+                <option value="investissement">Investissement Immobilier</option>
+                <option value="gestion">Gestion Patrimoniale</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+              <textarea rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm resize-none" required></textarea>
+            </div>
+            <button type="submit" class="w-full bg-primary text-white py-4 rounded-button font-semibold hover:bg-amber-600 transition-colors duration-300 whitespace-nowrap">
+              Envoyer le Message
+            </button>
+          </form>
+        </div>
+        <div class="lg:pl-8">
+          <h3 class="font-['Playfair_Display'] text-2xl font-semibold mb-8 text-secondary">Informations de Contact</h3>
+          <div class="space-y-8">
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="ri-phone-line text-xl text-primary"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-secondary mb-2">Téléphone</h4>
+                <p class="text-gray-600 mb-1">France : +33 6 62 75 24 99</p>
+                <p class="text-gray-600">Sénégal : +221 77 123 45 67</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="ri-mail-line text-xl text-primary"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-secondary mb-2">Email</h4>
+                <p class="text-gray-600">contact@seydasyimmo.com</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="ri-time-line text-xl text-primary"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-secondary mb-2">Horaires d'Ouverture</h4>
+                <p class="text-gray-600 mb-1">Lundi - Vendredi : 9h00 - 18h00</p>
+                <p class="text-gray-600">Samedi : 9h00 - 13h00</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="ri-whatsapp-line text-xl text-primary"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-secondary mb-2">WhatsApp</h4>
+                <p class="text-gray-600">Disponible 24h/7j pour vos urgences</p>
+                <a href="https://wa.me/33662752499" class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded-button text-sm font-medium hover:bg-green-600 transition-colors duration-300 whitespace-nowrap">
+                  Démarrer une Conversation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-secondary text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div class="lg:col-span-2">
+          <div class="font-['Pacifico'] text-3xl font-bold text-primary mb-6">Seydasyimmo</div>
+          <p class="text-gray-300 mb-6 leading-relaxed max-w-md">
+            Votre partenaire de confiance pour découvrir le Sénégal et investir dans l'immobilier africain. Une expertise locale au service de vos projets internationaux.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+              <i class="ri-facebook-fill text-primary hover:text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+              <i class="ri-instagram-line text-primary hover:text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+              <i class="ri-linkedin-fill text-primary hover:text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary transition-colors duration-300">
+              <i class="ri-whatsapp-fill text-primary hover:text-white"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-['Playfair_Display'] text-xl font-semibold mb-6">Services</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300">Voyages Organisés</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300">Excursions Premium</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300">Accueil VIP</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300">Immobilier</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-primary transition-colors duration-300">Investissement</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-['Playfair_Display'] text-xl font-semibold mb-6">Contact</h4>
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-300">
+              <div class="w-5 h-5 flex items-center justify-center mr-3">
+                <i class="ri-phone-line text-primary"></i>
+              </div>
+              +33 6 62 75 24 99
+            </li>
+            <li class="flex items-center text-gray-300">
+              <div class="w-5 h-5 flex items-center justify-center mr-3">
+                <i class="ri-mail-line text-primary"></i>
+              </div>
+              contact@seydasyimmo.com
+            </li>
+            <li class="flex items-start text-gray-300">
+              <div class="w-5 h-5 flex items-center justify-center mr-3 mt-1">
+                <i class="ri-map-pin-line text-primary"></i>
+              </div>
+              <div>
+                <p>Paris, France</p>
+                <p>Dakar, Sénégal</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm mb-4 md:mb-0">
+            © 2025 Seydasyimmo - Tous droits réservés
+          </p>
+         
+           
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bouton WhatsApp Flottant -->
+  <a href="https://wa.me/33662752499" class="floating-whatsapp bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition-colors duration-300">
+    <i class="ri-whatsapp-fill text-2xl"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Navigation scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('navbar-blur');
+        } else {
+          navbar.classList.remove('navbar-blur');
+        }
+      });
+
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('menu-open');
+      });
+
+      // Hero Slider
+      const slides = document.querySelectorAll('.slide');
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active-slide'));
+        slides[index].classList.add('active-slide');
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      showSlide(0);
+      setInterval(nextSlide, 5000);
+
+      // Gallery Filter
+      const filterButtons = document.querySelectorAll('.gallery-filter');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const filter = this.getAttribute('data-filter');
+          
+          filterButtons.forEach(btn => {
+            btn.classList.remove('active', 'bg-primary', 'text-white');
+            btn.classList.add('bg-white', 'text-gray-700');
+          });
+          
+          this.classList.add('active', 'bg-primary', 'text-white');
+          this.classList.remove('bg-white', 'text-gray-700');
+          
+          galleryItems.forEach(item => {
+            if (filter === 'all' || item.classList.contains(filter)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Smooth scroll
+      const links = document.querySelectorAll('a[href^="#"]');
+      links.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const target = document.querySelector(targetId);
+          
+          if (target) {
+            // Close mobile menu if open
+            mobileMenu.classList.remove('menu-open');
+            
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Form submission
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          alert('Merci pour votre message ! Nous vous contacterons bientôt.');
+          contactForm.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>
